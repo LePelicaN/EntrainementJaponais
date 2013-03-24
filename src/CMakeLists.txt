@@ -5,7 +5,8 @@ SET( QT_USE_QTXML TRUE )
 INCLUDE( ${QT_USE_FILE} )
 ADD_DEFINITIONS( ${QT_DEFINITIONS} )
 
-INCLUDE_DIRECTORIES( legacy
+INCLUDE_DIRECTORIES( .
+                     legacy
                      rechercheMot
                      rechercheMotGUI
                      utilitaires
@@ -23,11 +24,11 @@ FILE( GLOB RECHERCHE_MOT_GUI_SRC "rechercheMotGUI/*.*" )
 FILE( GLOB UTILITAIRES_SRC "utilitaires/*.*" )
 
 SET( QTFILE_HEADERS
-     legacy/fenetrePrincipale.hpp
-     legacy/filtreEnter.hpp
-     rechercheMotGUI/chercheurMotWidger.hpp
+     legacy/fenetrePrincipale.h
+     legacy/filtreEnter.h
+     rechercheMotGUI/chercheurMotWidget.hpp
      utilitaires/iRecupPageHTML.hpp
-     utilitaires/rechercherGoogle.hpp
+     utilitaires/rechercheGoogle.hpp
      utilitaires/recupPageHTML.hpp )
 
 QT4_WRAP_CPP( QTFILE_HEADERS_MOC ${QTFILE_HEADERS} )
@@ -43,7 +44,9 @@ ADD_LIBRARY( src
              ${LEGACY_SRC}
              ${RECHERCHE_MOT_SRC}
              ${RECHERCHE_MOT_GUI_SRC}
-             ${UTILITAIRES_SRC} )
+             ${UTILITAIRES_SRC}
+             ${QTFILE_HEADERS_MOC}
+             ${SOURCES_RC_SRC} )
 
 TARGET_LINK_LIBRARIES( src ${QT_LIBRARIES} ${Boost_LIBRARIES} libregex_builder.a )
 

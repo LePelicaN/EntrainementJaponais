@@ -2,7 +2,7 @@
 #ifndef RECHERCHE_MOT_CHERCHER_MOT_ENTRAINEMENT_JAP
 #define RECHERCHE_MOT_CHERCHER_MOT_ENTRAINEMENT_JAP
 
-#include "../../Mot.h"
+#include <legacy/Mot.h>
 
 #include <string>
 
