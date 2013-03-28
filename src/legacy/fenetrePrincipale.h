@@ -139,6 +139,8 @@ protected:
 
    string myTrim( string & inStr );
 
+   QPushButton    * boutonSauvLoupes_;
+
 public:
    FenetrePrincipale( const string inFileName, QWidget * parent = 0 );
    virtual ~FenetrePrincipale();
@@ -180,6 +182,8 @@ public slots:
    void modifArbre( QTreeWidgetItem * inItem, int inCol );
    
    void rechercherMot();
+   
+   void sauvLoupes();
 };
 
 #endif

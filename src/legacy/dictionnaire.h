@@ -102,6 +102,9 @@ public:
                const bool inEnregistrLoupe,
                unsigned int nbAjout );
 
+   unsigned int nbMotLoupes( ModeMot::Enum modeMot ) const;
+   std::vector< Mot > motLoupes() const;
+
    friend std::ostream & operator<<( std::ostream & o, Dictionnaire & inDictionnaire );
 };
 

@@ -299,6 +299,12 @@ QWidget( parent )
    gridLayout->addWidget( rechercheMot, 11, 1, 1, 1 );
    connect( rechercheMot, SIGNAL( clicked() ),
             this,         SLOT(   rechercherMot() ) );
+
+   boutonSauvLoupes_ = new QPushButton( tr( "Sauvegarder les mots loupés" ) );
+   gridLayout->addWidget( boutonSauvLoupes_, 12, 0, 1, 2 );
+
+   connect( boutonSauvLoupes_, SIGNAL( clicked() ),
+            this,              SLOT(   sauvLoupes() ) );
 }
 
 FenetrePrincipale::~FenetrePrincipale()
@@ -1059,4 +1065,51 @@ void FenetrePrincipale::rechercherMot()
    {
       //emit nouveauManga( choixManga.recupMangaOnline() );
    }
+}
+
+#include <QtGui/QInputDialog>
+#include <QtGui/QMessageBox>
+void FenetrePrincipale::sauvLoupes()
+{
+   if ( modeMot_ != ModeMot::Mot )
+   {
+      QMessageBox   msgBox;
+      msgBox.setText( "C'est que pour les groupes de mots." );
+      msgBox.exec();
+      return;
+   }
+
+   if ( dictionnaire_->nbMotLoupes( modeMot_ ) == 0 )
+   {
+      QMessageBox   msgBox;
+      msgBox.setText( "Aucun mot loupé présent." );
+      msgBox.exec();
+      return;
+   }
+
+   QString text = QInputDialog::getText( this,
+                                         tr( "Nom du groupe" ),
+                                         tr( "Nom du groupe :" ) );
+   if ( text.isEmpty() )
+   {
+      QMessageBox   msgBox;
+      msgBox.setText( "Saisie un nom de groupe non vide." );
+      msgBox.exec();
+      return;
+   }
+
+   std::string groupe = text.toStdString();
+   if ( mapMotGroupe_.find( groupe ) != mapMotGroupe_.end() )
+   {
+      QMessageBox   msgBox;
+      msgBox.setText( "Saisie un nom de groupe valide." );
+      msgBox.exec();
+      return;
+   }
+
+   ordreMot_.push_back( groupe );
+   mapMotGroupe_[ groupe ] = dictionnaire_->motLoupes();
+   mapMotChecked_[ groupe ] = Qt::Checked;
+
+   chargementArbre();
 }

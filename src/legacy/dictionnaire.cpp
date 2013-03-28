@@ -3,6 +3,8 @@
 
 #include <ctime>
 
+#include <cassert>
+
 Dictionnaire::Dictionnaire()
 {
    nbErreur_   = 0;
@@ -581,4 +583,36 @@ std::ostream & operator<<( std::ostream & o, Dictionnaire & inDictionnaire )
       o << std::endl;
    }
    return o;
+}
+
+unsigned int Dictionnaire::nbMotLoupes( ModeMot::Enum modeMot ) const
+{
+   switch ( modeMot )
+   {
+      case ModeMot::Hiragana :
+         return vecteurHiraganaLoupe_.size();
+         break;
+      case ModeMot::Katakana :
+         return vecteurKatakanaLoupe_.size();
+         break;
+      case ModeMot::Mot :
+         return multimapMotLoupe_.size();
+         break;
+      default :
+         assert(false);
+   }
+}
+
+std::vector< Mot > Dictionnaire::motLoupes() const
+{
+   std::vector< Mot > outMotLoupes;
+
+   for ( multimap< string, Mot >::const_iterator motCourant = multimapMotLoupe_.begin();
+         motCourant != multimapMotLoupe_.end();
+         ++motCourant )
+   {
+      outMotLoupes.push_back( motCourant->second );
+   }
+
+   return outMotLoupes;
 }
