@@ -1,4 +1,4 @@
-#include "fenetrePrincipale.h"
+#include "fenetrePrincipale/FenetrePrincipale.hpp"
 
 #include <QApplication>
 
@@ -6,7 +6,7 @@ int main( int argc, char *argv[] ) {
 
    QApplication app(argc, argv);
 
-   FenetrePrincipale fenetre( argc == 1 ? "listeJap.txt" : argv[1] );
+   entrJap::fenPrinc::FenetrePrincipale fenetre;
 
    fenetre.show();
 
