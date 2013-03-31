@@ -1,6 +1,7 @@
 
 SET( QT_USE_QTNETWORK TRUE )
 SET( QT_USE_QTXML TRUE )
+SET( QT_USE_QTCONSOLE TRUE )
 
 INCLUDE( ${QT_USE_FILE} )
 ADD_DEFINITIONS( ${QT_DEFINITIONS} )
@@ -30,6 +31,7 @@ SET( QTFILE_HEADERS
      fenetrePrincipale/FenetrePrincipale.hpp
      fenetrePrincipale/ModuleChoixExercice.hpp
      fenetrePrincipale/ModuleGestionFichier.hpp
+     fenetrePrincipale/ModuleOptionnel.hpp
      fenetrePrincipale/ModuleMotsLoupes.hpp
      fenetrePrincipale/ModulePrincipal.hpp
      rechercheMotGUI/chercheurMotWidget.hpp

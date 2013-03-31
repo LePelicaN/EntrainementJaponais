@@ -4,6 +4,9 @@
 
 #include <QtGui/QWidget>
 
+#include <QtGui/QCheckBox>
+#include <QtGui/QRadioButton>
+
 namespace entrJap { namespace fenPrinc {
 
 class ModuleChoixExercice : public QWidget
@@ -13,7 +16,20 @@ class ModuleChoixExercice : public QWidget
       ModuleChoixExercice();
 
    private :
+      QRadioButton * radioHiragana_;
+      QRadioButton * radioKatakana_;
+      QRadioButton * radioMot_;
+      QCheckBox * loupeUniquement_;
+
+      QRadioButton * radioTotalAleatoire_;
+      QRadioButton * radioAleatoireSansOk_;
+      QRadioButton * radioALaSuite_;
+
+      QCheckBox * afficherRomaji_;
+
       void creationFenetre();
+      QWidget * creationWidgetTypeMot();
+      QWidget * creationWidgetTypeExercice();
 };
 
 } }
