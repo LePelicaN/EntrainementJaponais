@@ -1,4 +1,4 @@
-
+﻿
 #include "ModuleOptionnel.hpp"
 
 #include <QtGui/QVBoxLayout>
