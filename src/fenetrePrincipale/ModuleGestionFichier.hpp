@@ -4,6 +4,9 @@
 
 #include <QtGui/QWidget>
 
+#include <QtGui/QPushButton>
+#include <QtGui/QTreeView>
+
 namespace entrJap { namespace fenPrinc {
 
 class ModuleGestionFichier : public QWidget
@@ -13,6 +16,14 @@ class ModuleGestionFichier : public QWidget
       ModuleGestionFichier();
 
    private :
+      QTreeView * vueArbre_;
+
+      QPushButton * boutonActualiserExercice_;
+
+      QPushButton * boutonChargerArbre_;
+      QPushButton * boutonSauvegarderArbre_;
+      QPushButton * boutonEditerFichier_;
+
       void creationFenetre();
 };
 
