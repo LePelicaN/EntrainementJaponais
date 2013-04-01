@@ -21,6 +21,7 @@ SET( SOURCES_RC resources/resource.qrc )
 
 FILE( GLOB LEGACY_SRC "legacy/*.*" )
 FILE( GLOB FENETRE_PRINCIPALE_SRC "fenetrePrincipale/*.*" )
+FILE( GLOB MODELE_MOTS_SRC "modeleMots/*.*" )
 FILE( GLOB RECHERCHE_MOT_SRC "rechercheMot/*.*" )
 FILE( GLOB RECHERCHE_MOT_GUI_SRC "rechercheMotGUI/*.*" )
 FILE( GLOB UTILITAIRES_SRC "utilitaires/*.*" )
@@ -44,6 +45,7 @@ QT4_ADD_RESOURCES( SOURCES_RC_SRC ${SOURCES_RC} )
 
 SOURCE_GROUP( Legacy FILES ${LEGACY_SRC} )
 SOURCE_GROUP( FenetrePrincipale FILES ${FENETRE_PRINCIPALE_SRC} )
+SOURCE_GROUP( ModeleMots FILES ${MODELE_MOTS_SRC} )
 SOURCE_GROUP( RechercheMot FILES ${RECHERCHE_MOT_SRC} )
 SOURCE_GROUP( RechercheMotGUI FILES ${RECHERCHE_MOT_GUI_SRC} )
 SOURCE_GROUP( Utilitaires FILES ${UTILITAIRES_SRC} )
@@ -52,6 +54,7 @@ ADD_LIBRARY( src
 #             SHARED
              ${LEGACY_SRC}
              ${FENETRE_PRINCIPALE_SRC}
+             ${MODELE_MOTS_SRC}
              ${RECHERCHE_MOT_SRC}
              ${RECHERCHE_MOT_GUI_SRC}
              ${UTILITAIRES_SRC}
